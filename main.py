@@ -395,14 +395,18 @@ def load_dataset(dataset_dir="dataset"):
     label_map = {}  # Mapeo nombre -> índice
     current_label_idx = 0
     
-    npz_files = [f for f in os.listdir(dataset_dir) if f.endswith('.npz')]
+    npz_files = []
+    for root, dirs, files in os.walk(dataset_dir):
+        for file in files:
+            if file.endswith('.npz'):
+                npz_files.append(os.path.join(root, file))
     
     print(f"\n📂 Cargando dataset desde: {dataset_dir}")
     print(f"   Archivos encontrados: {len(npz_files)}\n")
     
-    for file in sorted(npz_files):
-        filepath = os.path.join(dataset_dir, file)
+    for filepath in sorted(npz_files):
         data = np.load(filepath)
+        file = os.path.basename(filepath)
         
         sequence = data['sequence']
         label = str(data['label'])
@@ -465,7 +469,13 @@ def main():
     def get_available_npz(dataset_dir="dataset"):
         if not os.path.exists(dataset_dir):
             os.makedirs(dataset_dir)
-        return [f for f in os.listdir(dataset_dir) if f.endswith('.npz')]
+        npz_files = []
+        for root, dirs, files in os.walk(dataset_dir):
+            for file in files:
+                if file.endswith('.npz'):
+                    rel_path = os.path.relpath(os.path.join(root, file), dataset_dir)
+                    npz_files.append(rel_path.replace('\\', '/'))
+        return npz_files
     
     while True:
         print("\n" + "="*60)
@@ -522,20 +532,52 @@ def main():
             if not archivos:
                 print("⚠️ No hay señas guardadas en el dataset.")
                 continue
-                
-            print("\nSeñas disponibles:")
-            for i, arch in enumerate(archivos):
-                label = arch.split('_')[0]
-                print(f"  {i+1}. {label} ({arch})")
-                
+
+            # Agrupar por categorías (carpetas)
+            categorias = {}
+            for arch in archivos:
+                # Extraer carpeta contenedora
+                dir_name = os.path.dirname(arch)
+                if not dir_name:
+                    categoria = "General (Raíz)"
+                else:
+                    categoria = dir_name
+
+                if categoria not in categorias:
+                    categorias[categoria] = []
+                categorias[categoria].append(arch)
+
+            # --- 1. Seleccionar Categoría ---
+            print("\nCategorías disponibles:")
+            nombres_categorias = list(categorias.keys())
+            for i, cat in enumerate(nombres_categorias):
+                print(f"  {i+1}. {cat} ({len(categorias[cat])} señas)")
+
             try:
-                idx = int(input("\nElige el número de la seña a ver: ")) - 1
-                if 0 <= idx < len(archivos):
-                    label_elegido = archivos[idx].split('_')[0]
-                    ruta = os.path.join("dataset", archivos[idx])
+                idx_cat = int(input("\nElige el número de la categoría: ")) - 1
+                if idx_cat < 0 or idx_cat >= len(nombres_categorias):
+                    print("❌ Opción inválida.")
+                    continue
+                
+                categoria_elegida = nombres_categorias[idx_cat]
+                archivos_cat = categorias[categoria_elegida]
+
+                # --- 2. Seleccionar Seña (dentro de la categoría) ---
+                print(f"\nSeñas en '{categoria_elegida}':")
+                for i, arch in enumerate(archivos_cat):
+                    label = os.path.basename(arch).split('_')[0]
+                    print(f"  {i+1}. {label}")
+
+                idx_sena = int(input("\nElige el número de la seña a ver: ")) - 1
+                if 0 <= idx_sena < len(archivos_cat):
+                    archivo_elegido = archivos_cat[idx_sena]
+                    label_elegido = os.path.basename(archivo_elegido).split('_')[0]
+                    ruta = os.path.join("dataset", archivo_elegido)
                     replicator.loop_playback(ruta, label_elegido)
+                else:
+                    print("❌ Opción inválida.")
             except ValueError:
-                print("❌ Opción inválida.")
+                print("❌ Entrada inválida. Por favor, ingresa un número.")
                 
         elif opcion == '3':
             archivos = get_available_npz()
@@ -543,27 +585,90 @@ def main():
                 print("⚠️ No hay señas guardadas para practicar.")
                 continue
                 
-            print("\nSeñas disponibles para practicar:")
-            for i, arch in enumerate(archivos):
-                label = arch.split('_')[0]
-                print(f"  {i+1}. {label} ({arch})")
-                
+            # Agrupar por categorías (carpetas)
+            categorias = {}
+            for arch in archivos:
+                dir_name = os.path.dirname(arch)
+                if not dir_name:
+                    categoria = "General (Raíz)"
+                else:
+                    categoria = dir_name
+
+                if categoria not in categorias:
+                    categorias[categoria] = []
+                categorias[categoria].append(arch)
+
+            # --- 1. Seleccionar Categoría ---
+            print("\nCategorías disponibles para practicar:")
+            nombres_categorias = list(categorias.keys())
+            for i, cat in enumerate(nombres_categorias):
+                print(f"  {i+1}. {cat} ({len(categorias[cat])} señas)")
+
             try:
-                idx = int(input("\nElige el número de la seña para practicar: ")) - 1
-                if 0 <= idx < len(archivos):
-                    label_elegido = archivos[idx].split('_')[0]
-                    ruta = os.path.join("dataset", archivos[idx])
+                idx_cat = int(input("\nElige el número de la categoría: ")) - 1
+                if idx_cat < 0 or idx_cat >= len(nombres_categorias):
+                    print("❌ Opción inválida.")
+                    continue
+                
+                categoria_elegida = nombres_categorias[idx_cat]
+                archivos_cat = categorias[categoria_elegida]
+
+                # --- 2. Seleccionar Seña (dentro de la categoría) ---
+                print(f"\nSeñas en '{categoria_elegida}':")
+                for i, arch in enumerate(archivos_cat):
+                    label = os.path.basename(arch).split('_')[0]
+                    print(f"  {i+1}. {label}")
+                    
+                idx_sena = int(input("\nElige el número de la seña para practicar: ")) - 1
+                if 0 <= idx_sena < len(archivos_cat):
+                    archivo_elegido = archivos_cat[idx_sena]
+                    label_elegido = os.path.basename(archivo_elegido).split('_')[0]
+                    ruta = os.path.join("dataset", archivo_elegido)
                     validator.start_practice_session(ruta, label_elegido)
+                else:
+                     print("❌ Opción inválida.")
             except ValueError:
-                 print("❌ Opción inválida.")
+                 print("❌ Entrada inválida. Por favor, ingresa un número.")
                  
         elif opcion == '4':
-            video_path = input("\nRuta del video MP4 (ej: videos/sena.mp4): ").strip()
-            label = input("Nombre de la seña: ").strip()
-            if video_path and os.path.exists(video_path):
-                detector.process_video_file(video_path, label=label if label else None)
+            input_path = input("\nRuta del video MP4 o carpeta (ej: videos/tiempo): ").strip()
+            
+            if not input_path or not os.path.exists(input_path):
+                print("❌ Ruta no encontrada.")
+                continue
+                
+            if os.path.isdir(input_path):
+                print(f"\n📂 Buscando videos en la carpeta: {input_path}")
+                video_files = []
+                for root, dirs, files in os.walk(input_path):
+                    for file in files:
+                        if file.lower().endswith('.mp4'):
+                            video_files.append(os.path.join(root, file))
+                            
+                if not video_files:
+                    print(f"⚠️ No se encontraron videos MP4 en {input_path}.")
+                    continue
+                    
+                print(f"✅ Se encontraron {len(video_files)} videos. Iniciando procesamiento en lote...")
+                for vp in video_files:
+                    base_name = os.path.splitext(os.path.basename(vp))[0]
+                    rel_dir = os.path.relpath(os.path.dirname(vp), input_path)
+                    
+                    base_folder = os.path.basename(os.path.normpath(input_path))
+                    if rel_dir == '.':
+                        out_dir = os.path.join("dataset", base_folder)
+                    else:
+                        out_dir = os.path.join("dataset", base_folder, rel_dir)
+                        
+                    detector.process_video_file(vp, output_dir=out_dir, label=base_name)
+                    
+            elif os.path.isfile(input_path) and input_path.lower().endswith('.mp4'):
+                label = input("Nombre de la seña (deja en blanco para usar nombre del archivo): ").strip()
+                if not label:
+                    label = os.path.splitext(os.path.basename(input_path))[0]
+                detector.process_video_file(input_path, output_dir="dataset", label=label)
             else:
-                print("❌ Video no encontrado.")
+                print("❌ El archivo provisto no es un video MP4 soportado.")
 
     detector.holistic.close()
     print("\n👋 ¡Hasta luego!")
