@@ -255,6 +255,9 @@ class AvatarReplicator:
         print("\n" + "="*50)
         print(f"🎬 Mostrando Patrón: {label}")
         print("  - [ESPACIO] Pausar / Continuar")
+        print("  - [E] Exportar Avatar a MP4 (Alta Calidad)")
+        print("  - [A / D] Cuadro Anterior/Siguiente (Si está pausado)")
+        print("  - [N / B] Siguiente/Anterior Seña en la categoría")
         print("  - [Q] Salir al menú principal")
         print("="*50 + "\n")
 
@@ -267,7 +270,7 @@ class AvatarReplicator:
             frame_img = self.render_frame(frame_img, skeleton_data, is_npz=True)
             
             # UI Overlay
-            cv2.putText(frame_img, f"SENIA: {label.upper()}", (30, 50), 
+            cv2.putText(frame_img, f"SEÑA: {label.upper()}", (30, 50), 
                         cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
             cv2.putText(frame_img, f"({current_frame+1}/{total_frames})", (30, 90), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200, 200, 200), 2)
@@ -279,14 +282,63 @@ class AvatarReplicator:
             cv2.imshow('Avatar Replicator Patrón', frame_img)
             
             key = cv2.waitKey(40 if not is_paused else 0) & 0xFF
+            
             if key == ord('q'):
-                break
+                cv2.destroyAllWindows()
+                return 'quit'
+            elif key == ord('n'):
+                return 'next'
+            elif key == ord('b') or key == ord('p'):
+                return 'prev'
             elif key == ord(' '):
                 is_paused = not is_paused
+            elif key == ord('e'):
+                print(f"\n⏳ Exportando video HD de '{label}'... por favor espera.")
+                self.export_to_mp4(sequence, label)
+                cv2.imshow('Avatar Replicator Patrón', frame_img)
+            elif is_paused and key == ord('d'):
+                # Siguiente cuadro
+                current_frame = (current_frame + 1) % total_frames
+            elif is_paused and key == ord('a'):
+                # Cuadro anterior
+                current_frame = (current_frame - 1) % total_frames
                 
             if not is_paused:
                 current_frame += 1
                 if current_frame >= total_frames:
                     current_frame = 0 # Loop back
 
-        cv2.destroyAllWindows()
+    def export_to_mp4(self, sequence, label):
+        """
+        Exporta la secuencia del avatar a un archivo MP4 de alta calidad.
+        """
+        import os
+        from datetime import datetime
+        
+        output_dir = "exportaciones_avatar"
+        os.makedirs(output_dir, exist_ok=True)
+        
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_filename = os.path.join(output_dir, f"{label}_avatar_HD_{timestamp}.mp4")
+        
+        # mp4v es ampliamente soportado en Windows y WhatsApp
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        fps = 10.0 # Mismo framerate target que se usa al grabar
+        
+        # 1280x720 es HD standard (720p)
+        writer = cv2.VideoWriter(output_filename, fourcc, fps, (1280, 720))
+        
+        for skeleton_data in sequence:
+            # Fondo negro
+            frame_img = np.zeros((720, 1280, 3), dtype=np.uint8)
+            # Renderizamos limpio
+            frame_img = self.render_frame(frame_img, skeleton_data, is_npz=True)
+            
+            # Etiqueta limpia
+            cv2.putText(frame_img, f"{label.upper()}", (30, 60), 
+                        cv2.FONT_HERSHEY_DUPLEX, 1.5, (255, 255, 255), 2)
+                        
+            writer.write(frame_img)
+            
+        writer.release()
+        print(f"✅ ¡Video HD guardado en la carpeta '{output_dir}'!")

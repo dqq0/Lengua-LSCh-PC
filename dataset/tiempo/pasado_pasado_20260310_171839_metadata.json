@@ -1,0 +1,16 @@
+{
+  "filename": "pasado_pasado_20260310_171839.npz",
+  "filepath": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\dataset\\tiempo\\pasado_pasado_20260310_171839.npz",
+  "label": "pasado",
+  "source_video": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\videos\\tiempo\\pasado.mp4",
+  "timestamp": "20260310_171839",
+  "n_frames": 63,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

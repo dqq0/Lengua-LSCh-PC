@@ -570,10 +570,19 @@ def main():
 
                 idx_sena = int(input("\nElige el número de la seña a ver: ")) - 1
                 if 0 <= idx_sena < len(archivos_cat):
-                    archivo_elegido = archivos_cat[idx_sena]
-                    label_elegido = os.path.basename(archivo_elegido).split('_')[0]
-                    ruta = os.path.join("dataset", archivo_elegido)
-                    replicator.loop_playback(ruta, label_elegido)
+                    while True:
+                        archivo_elegido = archivos_cat[idx_sena]
+                        label_elegido = os.path.basename(archivo_elegido).split('_')[0]
+                        ruta = os.path.join("dataset", archivo_elegido)
+                        
+                        accion = replicator.loop_playback(ruta, label_elegido)
+                        
+                        if accion == 'next':
+                            idx_sena = (idx_sena + 1) % len(archivos_cat)
+                        elif accion == 'prev':
+                            idx_sena = (idx_sena - 1) % len(archivos_cat)
+                        else:
+                            break
                 else:
                     print("❌ Opción inválida.")
             except ValueError:

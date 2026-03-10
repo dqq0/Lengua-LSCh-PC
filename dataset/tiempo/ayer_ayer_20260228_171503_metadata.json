@@ -1,0 +1,16 @@
+{
+  "filename": "ayer_ayer_20260228_171503.npz",
+  "filepath": "dataset\\ayer_ayer_20260228_171503.npz",
+  "label": "ayer",
+  "source_video": "videos/ayer.mp4",
+  "timestamp": "20260228_171503",
+  "n_frames": 35,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

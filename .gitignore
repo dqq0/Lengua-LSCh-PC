@@ -7,6 +7,6 @@ env/
 venv/
 .env
 .venv
-dataset/
 videos/
+exportaciones_avatar/
 .DS_Store

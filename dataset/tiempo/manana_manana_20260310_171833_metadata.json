@@ -1,0 +1,16 @@
+{
+  "filename": "manana_manana_20260310_171833.npz",
+  "filepath": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\dataset\\tiempo\\manana_manana_20260310_171833.npz",
+  "label": "manana",
+  "source_video": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\videos\\tiempo\\manana.mp4",
+  "timestamp": "20260310_171833",
+  "n_frames": 34,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

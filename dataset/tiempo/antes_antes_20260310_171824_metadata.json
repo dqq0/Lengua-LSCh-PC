@@ -1,0 +1,16 @@
+{
+  "filename": "antes_antes_20260310_171824.npz",
+  "filepath": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\dataset\\tiempo\\antes_antes_20260310_171824.npz",
+  "label": "antes",
+  "source_video": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\videos\\tiempo\\antes.mp4",
+  "timestamp": "20260310_171824",
+  "n_frames": 76,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "pasado manana_pasado manana_20260310_171836.npz",
+  "filepath": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\dataset\\tiempo\\pasado manana_pasado manana_20260310_171836.npz",
+  "label": "pasado manana",
+  "source_video": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\videos\\tiempo\\pasado manana.mp4",
+  "timestamp": "20260310_171836",
+  "n_frames": 44,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

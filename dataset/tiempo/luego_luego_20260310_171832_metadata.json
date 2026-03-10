@@ -1,0 +1,16 @@
+{
+  "filename": "luego_luego_20260310_171832.npz",
+  "filepath": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\dataset\\tiempo\\luego_luego_20260310_171832.npz",
+  "label": "luego",
+  "source_video": "C:\\Users\\0\\.gemini\\antigravity\\scratch\\Lengua-LSCh-PC\\videos\\tiempo\\luego.mp4",
+  "timestamp": "20260310_171832",
+  "n_frames": 45,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
