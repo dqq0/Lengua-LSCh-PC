@@ -1,6 +1,8 @@
 import numpy as np
 from fastdtw import fastdtw
-from scipy.spatial.distance import euclidean
+
+def euclidean(u, v):
+    return np.linalg.norm(u - v)
 
 class PoseValidator:
     """

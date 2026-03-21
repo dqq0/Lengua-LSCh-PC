@@ -46,6 +46,20 @@ class AvatarReplicator:
         rh_data = frame_data[162:225].reshape(-1, 3)
         face_data = frame_data[225:1629].reshape(-1, 3)
         
+        # --- CENTRADO AUTOMÁTICO HORIZONTAL ---
+        if np.sum(pose_data) != 0:
+            # Usamos el punto medio de los hombros (índices 11 y 12) para saber dónde está el usuario
+            centro_hombros_x = (pose_data[11, 0] + pose_data[12, 0]) / 2.0
+            # Queremos mover ese centro al medio de la pantalla (x: 0.5)
+            offset_x = 0.5 - centro_hombros_x
+            
+            # Aplicamos este desplazamiento a TODOS los puntos extraídos
+            pose_data[:, 0] += offset_x
+            if np.sum(lh_data) != 0: lh_data[:, 0] += offset_x
+            if np.sum(rh_data) != 0: rh_data[:, 0] += offset_x
+            if np.sum(face_data) != 0: face_data[:, 0] += offset_x
+        # --------------------------------------
+        
         class MockLandmark:
             def __init__(self, x, y, z):
                 self.x = x
@@ -249,12 +263,14 @@ class AvatarReplicator:
             return
             
         total_frames = len(sequence)
-        current_frame = 0
+        current_frame = 0.0
         is_paused = False
+        slow_mode = False
         
         print("\n" + "="*50)
         print(f"🎬 Mostrando Patrón: {label}")
         print("  - [ESPACIO] Pausar / Continuar")
+        print("  - [L] Activar/Desactivar Modo Lento (0.35x)")
         print("  - [E] Exportar Avatar a MP4 (Alta Calidad)")
         print("  - [A / D] Cuadro Anterior/Siguiente (Si está pausado)")
         print("  - [N / B] Siguiente/Anterior Seña en la categoría")
@@ -265,16 +281,45 @@ class AvatarReplicator:
             # Pantalla base oscura (fondo del avatar)
             frame_img = np.zeros((720, 1280, 3), dtype=np.uint8)
             
-            # Dibujar avatar
-            skeleton_data = sequence[current_frame]
+            # Dibujar avatar con interpolacion fluida Inteligente ("Motion Smoothing")
+            idx_frame = int(current_frame)
+            frac = current_frame - idx_frame
+            idx_next = (idx_frame + 1) if (idx_frame + 1) < total_frames else idx_frame
+            
+            curr_seq = sequence[idx_frame]
+            next_seq = sequence[idx_next]
+            
+            # Máscara para detectar puntos que no existen en MediaPipe
+            mask_curr = curr_seq != 0.0
+            mask_next = next_seq != 0.0
+            mask_both = mask_curr & mask_next
+            
+            skeleton_data = np.zeros_like(curr_seq)
+            
+            # 1. Puntos presentes en ambas secuencias: Interpolar suavemente
+            skeleton_data[mask_both] = (curr_seq[mask_both] * (1.0 - frac)) + (next_seq[mask_both] * frac)
+            
+            # 2. Puntos ausentes en 1 de los cuadros: Sin interpolar, se snap-ean
+            mask_only_curr = mask_curr & ~mask_next
+            mask_only_next = mask_next & ~mask_curr
+            
+            if frac < 0.5:
+                skeleton_data[mask_only_curr] = curr_seq[mask_only_curr]
+            else:
+                skeleton_data[mask_only_next] = next_seq[mask_only_next]
+
             frame_img = self.render_frame(frame_img, skeleton_data, is_npz=True)
             
             # UI Overlay
             cv2.putText(frame_img, f"SEÑA: {label.upper()}", (30, 50), 
                         cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame_img, f"({current_frame+1}/{total_frames})", (30, 90), 
+            cv2.putText(frame_img, f"({idx_frame+1}/{total_frames})", (30, 90), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200, 200, 200), 2)
                         
+            if slow_mode:
+                cv2.putText(frame_img, "MODO LENTO FLUIDO (0.35x)", (950, 50), 
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+                            
             if is_paused:
                 cv2.putText(frame_img, "PAUSADO - ESPACIO PARA REANUDAR", (400, 680), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
@@ -292,21 +337,23 @@ class AvatarReplicator:
                 return 'prev'
             elif key == ord(' '):
                 is_paused = not is_paused
+            elif key == ord('l'):
+                slow_mode = not slow_mode
             elif key == ord('e'):
                 print(f"\n⏳ Exportando video HD de '{label}'... por favor espera.")
                 self.export_to_mp4(sequence, label)
                 cv2.imshow('Avatar Replicator Patrón', frame_img)
             elif is_paused and key == ord('d'):
                 # Siguiente cuadro
-                current_frame = (current_frame + 1) % total_frames
+                current_frame = (int(current_frame) + 1) % total_frames
             elif is_paused and key == ord('a'):
                 # Cuadro anterior
-                current_frame = (current_frame - 1) % total_frames
+                current_frame = (int(current_frame) - 1) % total_frames
                 
             if not is_paused:
-                current_frame += 1
+                current_frame += 0.35 if slow_mode else 1.0
                 if current_frame >= total_frames:
-                    current_frame = 0 # Loop back
+                    current_frame = 0.0 # Loop back
 
     def export_to_mp4(self, sequence, label):
         """

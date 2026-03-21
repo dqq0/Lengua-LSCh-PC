@@ -1,0 +1,16 @@
+{
+  "filename": "V_V_20260321_155529.npz",
+  "filepath": "dataset/abecedario\\V_V_20260321_155529.npz",
+  "label": "V",
+  "source_video": "videos/abecedario\\V.mp4",
+  "timestamp": "20260321_155529",
+  "n_frames": 24,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

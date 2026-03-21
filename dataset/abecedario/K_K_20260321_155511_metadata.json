@@ -1,0 +1,16 @@
+{
+  "filename": "K_K_20260321_155511.npz",
+  "filepath": "dataset/abecedario\\K_K_20260321_155511.npz",
+  "label": "K",
+  "source_video": "videos/abecedario\\K.mp4",
+  "timestamp": "20260321_155511",
+  "n_frames": 28,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

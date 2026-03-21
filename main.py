@@ -347,6 +347,38 @@ class SignLanguageDetector:
         
         return metadata
 
+    def process_image_to_sequence(self, image_path, output_dir="dataset", label=None, num_frames=15):
+        """
+        Procesa una imagen estática (foto) y genera una secuencia artificial 
+        repitiendo los keypoints para usarla en el validador como seña estática.
+        """
+        if not os.path.exists(image_path):
+            print(f"❌ Imagen no encontrada: {image_path}")
+            return None
+            
+        print(f"\nProcesando imagen estática: {os.path.basename(image_path)}")
+        image = cv2.imread(image_path)
+        if image is None:
+            print("❌ No se pudo leer la imagen.")
+            return None
+            
+        # Procesar con MediaPipe
+        img_rgb, results = self.process_frame(image)
+        
+        # Extraer keypoints
+        keypoints = self.extract_keypoints(results)
+        
+        if not results.left_hand_landmarks and not results.right_hand_landmarks and not results.pose_landmarks:
+            print("⚠️ Advertencia: No se detectaron manos ni postura en la imagen.")
+            
+        # Duplicar los keypoints `num_frames` veces para engañar al sistema (secuencia estática)
+        sequence = [keypoints for _ in range(num_frames)]
+        
+        # Guardar la secuencia
+        metadata = self._save_sequence(sequence, output_dir, label, image_path)
+        print(f"✅ Seña estática guardada: {metadata['filename']} ({num_frames} frames artificiales)")
+        return metadata
+
     # =========================================================================
     # MÉTODOS PARA CAPTURA EN TIEMPO REAL (PRÁCTICA)
     # =========================================================================
@@ -484,7 +516,8 @@ def main():
         print("  1. 🎥 Grabar nueva seña (Dataset)")
         print("  2. 🤖 Ver Avatar Patrón (Replicador)")
         print("  3. 🎓 Modo Práctica (Validador Tiempo Real)")
-        print("  4. 📤 Procesar MP4 a NPZ (Dataset)")
+        print("  4. 📤 Procesar Videos a NPZ (Dataset)")
+        print("  5. 🖼️ Procesar Foto a Seña Estática (Abecedario)")
         print("  Q. ❌ Salir")
         print("="*60)
         
@@ -640,7 +673,7 @@ def main():
                  print("❌ Entrada inválida. Por favor, ingresa un número.")
                  
         elif opcion == '4':
-            input_path = input("\nRuta del video MP4 o carpeta (ej: videos/tiempo): ").strip()
+            input_path = input("\nRuta del video (MP4, MOV, etc) o carpeta (ej: videos/tiempo): ").strip()
             
             if not input_path or not os.path.exists(input_path):
                 print("❌ Ruta no encontrada.")
@@ -651,11 +684,11 @@ def main():
                 video_files = []
                 for root, dirs, files in os.walk(input_path):
                     for file in files:
-                        if file.lower().endswith('.mp4'):
+                        if file.lower().endswith(('.mp4', '.mov', '.avi', '.mkv')):
                             video_files.append(os.path.join(root, file))
                             
                 if not video_files:
-                    print(f"⚠️ No se encontraron videos MP4 en {input_path}.")
+                    print(f"⚠️ No se encontraron videos en {input_path}.")
                     continue
                     
                 print(f"✅ Se encontraron {len(video_files)} videos. Iniciando procesamiento en lote...")
@@ -671,13 +704,56 @@ def main():
                         
                     detector.process_video_file(vp, output_dir=out_dir, label=base_name)
                     
-            elif os.path.isfile(input_path) and input_path.lower().endswith('.mp4'):
+            elif os.path.isfile(input_path) and input_path.lower().endswith(('.mp4', '.mov', '.avi', '.mkv')):
                 label = input("Nombre de la seña (deja en blanco para usar nombre del archivo): ").strip()
                 if not label:
                     label = os.path.splitext(os.path.basename(input_path))[0]
                 detector.process_video_file(input_path, output_dir="dataset", label=label)
             else:
-                print("❌ El archivo provisto no es un video MP4 soportado.")
+                print("❌ El archivo provisto no es un video soportado (.mp4, .mov, .avi, .mkv).")
+
+        elif opcion == '5':
+            input_path = input("\nRuta de la foto (.jpg, .png) o carpeta (ej: abecedario/): ").strip()
+            
+            if not input_path or not os.path.exists(input_path):
+                print("❌ Ruta no encontrada.")
+                continue
+                
+            if os.path.isdir(input_path):
+                print(f"\n📂 Buscando imágenes en la carpeta: {input_path}")
+                img_files = []
+                for root, dirs, files in os.walk(input_path):
+                    for file in files:
+                        if file.lower().endswith(('.jpg', '.jpeg', '.png')):
+                            img_files.append(os.path.join(root, file))
+                            
+                if not img_files:
+                    print(f"⚠️ No se encontraron imágenes en {input_path}.")
+                    continue
+                    
+                print(f"✅ Se encontraron {len(img_files)} imágenes. Iniciando procesamiento en lote...")
+                for ip in img_files:
+                    label = os.path.splitext(os.path.basename(ip))[0]
+                    base_folder = os.path.basename(os.path.normpath(input_path))
+                    rel_dir = os.path.relpath(os.path.dirname(ip), input_path)
+                    
+                    if rel_dir == '.':
+                        out_dir = os.path.join("dataset", base_folder)
+                    else:
+                        out_dir = os.path.join("dataset", base_folder, rel_dir)
+                        
+                    detector.process_image_to_sequence(ip, output_dir=out_dir, label=label, num_frames=15)
+                    
+            elif os.path.isfile(input_path) and input_path.lower().endswith(('.jpg', '.jpeg', '.png')):
+                label = input("Nombre de la letra/seña (deja en blanco para usar nombre del archivo): ").strip()
+                if not label:
+                    label = os.path.splitext(os.path.basename(input_path))[0]
+                
+                # Por defecto lo guardamos en dataset/abecedario si es solo una foto
+                out_dir = os.path.join("dataset", "abecedario")
+                detector.process_image_to_sequence(input_path, output_dir=out_dir, label=label, num_frames=15)
+            else:
+                 print("❌ El archivo provisto no es una imagen soportada (.jpg, .png).")
 
     detector.holistic.close()
     print("\n👋 ¡Hasta luego!")

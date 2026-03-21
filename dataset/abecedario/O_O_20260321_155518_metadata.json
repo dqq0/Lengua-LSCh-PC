@@ -1,0 +1,16 @@
+{
+  "filename": "O_O_20260321_155518.npz",
+  "filepath": "dataset/abecedario\\O_O_20260321_155518.npz",
+  "label": "O",
+  "source_video": "videos/abecedario\\O.mp4",
+  "timestamp": "20260321_155518",
+  "n_frames": 28,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
