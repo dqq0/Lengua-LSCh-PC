@@ -17,6 +17,64 @@ class PoseValidator:
             "face": 0.25
         }
         
+    def _get_normalization_params(self, pose):
+        """Calcula el centro y la escala a partir de los hombros (índices 11 y 12)."""
+        if not np.any(pose):
+            return np.zeros(3), 1.0
+            
+        p = pose.reshape(33, 3)
+        ls = p[11] # Hombro izquierdo
+        rs = p[12] # Hombro derecho
+        
+        origin = (ls + rs) / 2.0
+        scale = np.linalg.norm(ls - rs)
+        
+        if scale < 0.05: # Evitar division por cero en frames fallidos
+            scale = 1.0
+            
+        return origin, scale
+
+    def _normalize_points(self, points, origin, scale):
+        """Traslada al origen y escala independizando el tamaño de persona y distancia de la cámara."""
+        if not np.any(points):
+            return points
+            
+        p = points.reshape(-1, 3).copy()
+        p = p - origin
+        p = p / scale
+        return p.flatten()
+        
+    def _normalize_sequence(self, sequence):
+        """Aplica invarianza de traslación y escala a toda una secuencia resolviendo problemas de gente lejos o chica."""
+        new_seq = []
+        for frame in sequence:
+            pose = frame[0:99]
+            origin, scale = self._get_normalization_params(pose)
+            
+            n_pose = self._normalize_points(pose, origin, scale)
+            n_hands = self._normalize_points(frame[99:225], origin, scale)
+            n_face = frame[225:1629]
+            feat = frame[1629:1635]
+            
+            new_frame = np.concatenate([n_pose, n_hands, n_face, feat])
+            new_seq.append(new_frame)
+        return new_seq
+
+    def trim_idle_frames(self, sequence):
+        """Recorta cuadros inactivos donde no hay manos detectadas (ignora esperas al inicio o final)."""
+        active = []
+        for i, frame in enumerate(sequence):
+            hands = frame[99:225]
+            if np.any(hands):
+                active.append(i)
+                
+        if not active:
+            return sequence
+            
+        start = max(0, active[0] - 2) # dejar un margen natural
+        end = min(len(sequence), active[-1] + 3)
+        return sequence[start:end]
+        
     def calculate_frame_score(self, frame_student, frame_pattern):
         """
         Compara un solo frame (arreglo 1D de 1635 variables).
@@ -49,17 +107,17 @@ class PoseValidator:
             return max(0, min(100, 100 * (1 - (dist / threshold))))
             
         dist_pose = euclidean(s_pose, p_pose) if np.any(s_pose) and np.any(p_pose) else 2.0
-        score_pose = _get_score(dist_pose, 3.0) # Tolerancia mayor en cuerpo
+        score_pose = _get_score(dist_pose, 8.0) # Compensar la escala de normalizacion espacial
         
         # Penar fuertemente si no hay manos detectadas cuando el patrón sí las tiene
         if np.any(p_hands) and not np.any(s_hands):
             score_hands = 0.0
         else:
             dist_hands = euclidean(s_hands, p_hands) if np.any(s_hands) else 0.0
-            score_hands = _get_score(dist_hands, 1.5) # Muy estricto con las manos
+            score_hands = _get_score(dist_hands, 4.0) # Tolerancia ajustada a normalización agnóstica de cámara
             
         dist_face = euclidean(s_face_feat, p_face_feat) if np.any(s_face_feat) else 2.0
-        score_face = _get_score(dist_face, 1.0) # Ultra estricto con las microexpresiones
+        score_face = _get_score(dist_face, 1.5) # Estricto con las microexpresiones
         
         # 3. Score ponderado total
         total_score = (score_pose * self.weights["pose"] + 
@@ -76,24 +134,28 @@ class PoseValidator:
 
     def calculate_sequence_dtw(self, seq_student, seq_pattern):
         """
-        Compara dos secuencias temporales de frames usando Dynamic Time Warping.
-        Permite que el estudiante vaya más rápido o más lento que el video original.
-        Devuelve el Average Score del alineamiento óptimo.
+        Compara secuencias temporalmente alineadas usando DTW e invarianza espacial.
+        Permite tamaño/ubicación de usuario flexible, y recorta tiempos muertos naturales.
         """
-        if len(seq_student) == 0 or len(seq_pattern) == 0:
+        # 1. Recortar exceso de inactividad (bajar/subir brazos)
+        s_trim = self.trim_idle_frames(seq_student)
+        p_trim = self.trim_idle_frames(seq_pattern)
+        
+        if len(s_trim) == 0 or len(p_trim) == 0:
             return 0.0, None
             
-        # DTW retorna la distancia global y la ruta de alineación [(i, j)]
-        # donde 'i' es el índice del estudiante y 'j' el del patrón
-        distance, path = fastdtw(seq_student, seq_pattern, dist=euclidean)
+        # 2. Normalizar espacialmente para independizar la distancia de la cámara y tamaño del usuario
+        s_norm = self._normalize_sequence(s_trim)
+        p_norm = self._normalize_sequence(p_trim)
         
-        # Calcular el score frame a frame basado en el alineamiento óptimo de DTW
+        # 3. DTW sobre vectores ya normalizados
+        distance, path = fastdtw(s_norm, p_norm, dist=euclidean)
+        
         frame_scores = []
         for i, j in path:
-            score, _ = self.calculate_frame_score(seq_student[i], seq_pattern[j])
+            score, _ = self.calculate_frame_score(s_norm[i], p_norm[j])
             frame_scores.append(score)
             
-        # El score final es el promedio de los mejores alineamientos
         return np.mean(frame_scores), path
         
     def generate_feedback(self, breakdown, current_frame_student, current_frame_pattern):

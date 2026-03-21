@@ -134,10 +134,18 @@ class AvatarReplicator:
                 ceja_der_int = get_face_pt(285) # Interior
                 ceja_der_ext = get_face_pt(334) # Exterior
                 
-                # Dibujar las cejas como gruesas barras sólidas del MISMO color de la máscara
-                color_cejas = self.face_contour_style.color
-                cv2.line(image, ceja_izq_int, ceja_izq_ext, color_cejas, 8)
-                cv2.line(image, ceja_der_int, ceja_der_ext, color_cejas, 8)
+                # -- Cejas finas --
+                color_rostro = self.face_contour_style.color
+                cv2.line(image, ceja_izq_int, ceja_izq_ext, color_rostro, 3)
+                cv2.line(image, ceja_der_int, ceja_der_ext, color_rostro, 3)
+                
+                # --- Labios ---
+                # Puntos de la malla para el contorno de la boca superior e inferior
+                labio_superior = np.array([get_face_pt(i) for i in [61, 37, 0, 267, 291]], np.int32)
+                labio_inferior = np.array([get_face_pt(i) for i in [61, 84, 17, 314, 291]], np.int32)
+                
+                cv2.polylines(image, [labio_superior], isClosed=False, color=color_rostro, thickness=3)
+                cv2.polylines(image, [labio_inferior], isClosed=False, color=color_rostro, thickness=3)
             except IndexError:
                 pass
 
@@ -183,12 +191,18 @@ class AvatarReplicator:
                 color = self.pose_style.color
                 thick = self.pose_style.thickness
                 
-                # Columna Central y Cuello Central
-                cv2.line(image, centro_hombros, centro_caderas, color, thick)
-                cv2.line(image, centro_hombros, nariz, color, thick)
+                # Cuello Central (Más corto y proporcional, 35% del camino hacia la nariz)
+                cuello_fin = (int(centro_hombros[0] * 0.65 + nariz[0] * 0.35),
+                              int(centro_hombros[1] * 0.65 + nariz[1] * 0.35))
+                cv2.line(image, centro_hombros, cuello_fin, color, thick)
                 
-                # Hombros y Clavículas
-                cv2.line(image, hombro_izq, hombro_der, color, thick)
+                # Caja Torácica (Tronco completo)
+                cv2.line(image, hombro_izq, hombro_der, color, thick)         # Hombros
+                cv2.line(image, cadera_izq, cadera_der, color, thick)         # Base caderas
+                cv2.line(image, hombro_izq, cadera_izq, color, thick)         # Tronco lado izquierdo
+                cv2.line(image, hombro_der, cadera_der, color, thick)         # Tronco lado derecho
+                cv2.line(image, centro_hombros, centro_caderas, color, thick) # Columna
+
                 
                 # Brazo Izquierdo
                 cv2.line(image, hombro_izq, codo_izq, color, thick)
@@ -202,7 +216,7 @@ class AvatarReplicator:
                 # PUNTOS DE REFERENCIA EXPLÍCITOS PARA LSCh (Nodos de anclaje)
                 # =========================================================
                 color_nodo = (255, 255, 255) # Blanco para que destaquen
-                color_orejas = self.face_contour_style.color
+                color_orejas = (180, 105, 255) # Rosa en formato BGR para destacar
                 
                 # Orejas (Vital para señas como "escuchar", "audífono")
                 cv2.circle(image, oreja_izq, 5, color_orejas, -1)

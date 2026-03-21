@@ -34,6 +34,7 @@ Al abrirlo, verás un menú con 4 opciones principales. Solo escribe el **númer
 Cuando entras a la **Opción 2** para repasar alguna seña que ya está guardada, puedes utilizar tu teclado para controlar al Avatar:
 
 *   **ESPACIO**: Sirve para **Pausar** y **Continuar** la reproducción del Avatar.
+*   **L**: Activa o desactiva el **Modo Lento Fluido** (0.35x de la velocidad original, con generador matemático de cuadros intermedios).
 *   **E**: Te permite **Exportar** lo que el Avatar está haciendo y te generará automáticamente un video HD (`.mp4`) en tu computador de muy alta calidad y con el fondo limpio en negro.
 *   **N**: Te permite saltar a la **Siguiente** seña rápidamente sin salir de la ventana.
 *   **B** o **P**: Te permite retroceder a la seña **Anterior** rápidamente sin salir de la ventana.
