@@ -1,0 +1,16 @@
+{
+  "filename": "porque_porque_20260311_050235.npz",
+  "filepath": "dataset\\porque_porque_20260311_050235.npz",
+  "label": "porque",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\preguntas\\porque.mp4",
+  "timestamp": "20260311_050235",
+  "n_frames": 57,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

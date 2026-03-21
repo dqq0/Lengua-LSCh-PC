@@ -1,0 +1,16 @@
+{
+  "filename": "colorNaranjo_colorNaranjo_20260311_045823.npz",
+  "filepath": "dataset\\colorNaranjo_colorNaranjo_20260311_045823.npz",
+  "label": "colorNaranjo",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\colores\\colorNaranjo.mp4",
+  "timestamp": "20260311_045823",
+  "n_frames": 42,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

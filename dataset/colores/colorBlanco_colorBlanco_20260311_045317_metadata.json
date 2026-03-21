@@ -1,0 +1,16 @@
+{
+  "filename": "colorBlanco_colorBlanco_20260311_045317.npz",
+  "filepath": "dataset\\colorBlanco_colorBlanco_20260311_045317.npz",
+  "label": "colorBlanco",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\colores\\colorBlanco.mp4",
+  "timestamp": "20260311_045317",
+  "n_frames": 42,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

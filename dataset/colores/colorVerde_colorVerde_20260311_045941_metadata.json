@@ -1,0 +1,16 @@
+{
+  "filename": "colorVerde_colorVerde_20260311_045941.npz",
+  "filepath": "dataset\\colorVerde_colorVerde_20260311_045941.npz",
+  "label": "colorVerde",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\colores\\colorVerde.mp4",
+  "timestamp": "20260311_045941",
+  "n_frames": 36,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

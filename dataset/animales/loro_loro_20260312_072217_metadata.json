@@ -1,0 +1,16 @@
+{
+  "filename": "loro_loro_20260312_072217.npz",
+  "filepath": "dataset\\loro_loro_20260312_072217.npz",
+  "label": "loro",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\animales\\loro.mp4",
+  "timestamp": "20260312_072217",
+  "n_frames": 34,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

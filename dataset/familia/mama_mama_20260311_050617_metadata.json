@@ -1,0 +1,16 @@
+{
+  "filename": "mama_mama_20260311_050617.npz",
+  "filepath": "dataset\\mama_mama_20260311_050617.npz",
+  "label": "mama",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\mama.mp4",
+  "timestamp": "20260311_050617",
+  "n_frames": 24,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

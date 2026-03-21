@@ -1,0 +1,16 @@
+{
+  "filename": "tigre_tigre_20260312_072933.npz",
+  "filepath": "dataset\\tigre_tigre_20260312_072933.npz",
+  "label": "tigre",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\animales\\tigre.mp4",
+  "timestamp": "20260312_072933",
+  "n_frames": 50,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "papa_papa_20260311_050747.npz",
+  "filepath": "dataset\\papa_papa_20260311_050747.npz",
+  "label": "papa",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\papa.mp4",
+  "timestamp": "20260311_050747",
+  "n_frames": 23,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "zorro_zorro_20260312_073056.npz",
+  "filepath": "dataset\\zorro_zorro_20260312_073056.npz",
+  "label": "zorro",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\animales\\zorro.mp4",
+  "timestamp": "20260312_073056",
+  "n_frames": 36,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

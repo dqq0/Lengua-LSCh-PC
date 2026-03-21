@@ -1,0 +1,16 @@
+{
+  "filename": "nuera_nuera_20260311_050721.npz",
+  "filepath": "dataset\\nuera_nuera_20260311_050721.npz",
+  "label": "nuera",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\nuera.mp4",
+  "timestamp": "20260311_050721",
+  "n_frames": 24,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

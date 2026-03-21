@@ -1,0 +1,16 @@
+{
+  "filename": "hermano_hermano_20260311_050540.npz",
+  "filepath": "dataset\\hermano_hermano_20260311_050540.npz",
+  "label": "hermano",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\hermano.mp4",
+  "timestamp": "20260311_050540",
+  "n_frames": 23,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "nieto_nieto_20260311_050634.npz",
+  "filepath": "dataset\\nieto_nieto_20260311_050634.npz",
+  "label": "nieto",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\nieto.mp4",
+  "timestamp": "20260311_050634",
+  "n_frames": 27,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

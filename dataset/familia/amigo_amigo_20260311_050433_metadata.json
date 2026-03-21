@@ -1,0 +1,16 @@
+{
+  "filename": "amigo_amigo_20260311_050433.npz",
+  "filepath": "dataset\\amigo_amigo_20260311_050433.npz",
+  "label": "amigo",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\amigo.mp4",
+  "timestamp": "20260311_050433",
+  "n_frames": 31,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

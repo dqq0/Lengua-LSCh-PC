@@ -1,0 +1,16 @@
+{
+  "filename": "pollo_pollo_20260312_072759.npz",
+  "filepath": "dataset\\pollo_pollo_20260312_072759.npz",
+  "label": "pollo",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\animales\\pollo.mp4",
+  "timestamp": "20260312_072759",
+  "n_frames": 29,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

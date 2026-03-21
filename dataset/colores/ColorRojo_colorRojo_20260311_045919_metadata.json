@@ -1,0 +1,16 @@
+{
+  "filename": "ColorRojo_colorRojo_20260311_045919.npz",
+  "filepath": "dataset\\ColorRojo_colorRojo_20260311_045919.npz",
+  "label": "ColorRojo",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\colores\\colorRojo.mp4",
+  "timestamp": "20260311_045919",
+  "n_frames": 32,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

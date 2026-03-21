@@ -1,0 +1,16 @@
+{
+  "filename": "cu\u00f1ado_cu\u00f1ado_20260311_050514.npz",
+  "filepath": "dataset\\cu\u00f1ado_cu\u00f1ado_20260311_050514.npz",
+  "label": "cu\u00f1ado",
+  "source_video": "C:\\Users\\gubor\\Desktop\\lengua video\\familia\\cu\u00f1ado.mp4",
+  "timestamp": "20260311_050514",
+  "n_frames": 27,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
