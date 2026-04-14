@@ -509,6 +509,21 @@ def main():
                     npz_files.append(rel_path.replace('\\', '/'))
         return npz_files
     
+    def get_label_from_arch(arch_rel_path):
+        json_path = os.path.join("dataset", arch_rel_path.replace('.npz', '_metadata.json'))
+        if os.path.exists(json_path):
+            try:
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    return json.load(f).get('label', 'Desconocido')
+            except:
+                pass
+        
+        # Fallback: Quitar el timestamp, y tratar de extraer el nombre base completo
+        base = os.path.basename(arch_rel_path)
+        if '_202' in base:
+            return base.split('_202')[0]
+        return base.split('_')[0]
+    
     while True:
         print("\n" + "="*60)
         print("  SISTEMA DE LENGUA DE SEÑAS CHILENA (LSCh)")
@@ -598,14 +613,14 @@ def main():
                 # --- 2. Seleccionar Seña (dentro de la categoría) ---
                 print(f"\nSeñas en '{categoria_elegida}':")
                 for i, arch in enumerate(archivos_cat):
-                    label = os.path.basename(arch).split('_')[0]
+                    label = get_label_from_arch(arch)
                     print(f"  {i+1}. {label}")
 
                 idx_sena = int(input("\nElige el número de la seña a ver: ")) - 1
                 if 0 <= idx_sena < len(archivos_cat):
                     while True:
                         archivo_elegido = archivos_cat[idx_sena]
-                        label_elegido = os.path.basename(archivo_elegido).split('_')[0]
+                        label_elegido = get_label_from_arch(archivo_elegido)
                         ruta = os.path.join("dataset", archivo_elegido)
                         
                         accion = replicator.loop_playback(ruta, label_elegido)
@@ -658,13 +673,13 @@ def main():
                 # --- 2. Seleccionar Seña (dentro de la categoría) ---
                 print(f"\nSeñas en '{categoria_elegida}':")
                 for i, arch in enumerate(archivos_cat):
-                    label = os.path.basename(arch).split('_')[0]
+                    label = get_label_from_arch(arch)
                     print(f"  {i+1}. {label}")
                     
                 idx_sena = int(input("\nElige el número de la seña para practicar: ")) - 1
                 if 0 <= idx_sena < len(archivos_cat):
                     archivo_elegido = archivos_cat[idx_sena]
-                    label_elegido = os.path.basename(archivo_elegido).split('_')[0]
+                    label_elegido = get_label_from_arch(archivo_elegido)
                     ruta = os.path.join("dataset", archivo_elegido)
                     validator.start_practice_session(ruta, label_elegido)
                 else:

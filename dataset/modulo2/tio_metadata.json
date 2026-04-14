@@ -1,0 +1,16 @@
+{
+  "filename": "tio_tio_20260414_095707.npz",
+  "filepath": "dataset\\modulo2\\tio_tio_20260414_095707.npz",
+  "label": "tio",
+  "source_video": "videos\\modulo2\\tio.mp4",
+  "timestamp": "20260414_095707",
+  "n_frames": 106,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

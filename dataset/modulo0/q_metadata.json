@@ -1,0 +1,16 @@
+{
+  "filename": "q_Q_20260414_095510.npz",
+  "filepath": "dataset\\modulo0\\q_Q_20260414_095510.npz",
+  "label": "q",
+  "source_video": "videos\\abecedario\\Q.mp4",
+  "timestamp": "20260414_095510",
+  "n_frames": 77,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

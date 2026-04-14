@@ -283,12 +283,12 @@ class SignLanguageDetector:
         # Crear estructura de carpetas
         os.makedirs(output_dir, exist_ok=True)
         
-        # Generar nombre único
+        # Generar nombre limpio (solo el label, ej: 'A.npz', 'mama.npz')
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         video_name = os.path.splitext(os.path.basename(source_video))[0]
         label_str = label or "unknown"
         
-        filename = f"{label_str}_{video_name}_{timestamp}.npz"
+        filename = f"{label_str}.npz"
         filepath = os.path.join(output_dir, filename)
         
         # Guardar como NPZ (comprimido y eficiente)

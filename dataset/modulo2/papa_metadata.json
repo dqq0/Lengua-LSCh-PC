@@ -1,0 +1,16 @@
+{
+  "filename": "papa_papa_20260414_095630.npz",
+  "filepath": "dataset\\modulo2\\papa_papa_20260414_095630.npz",
+  "label": "papa",
+  "source_video": "videos\\modulo2\\papa.mp4",
+  "timestamp": "20260414_095630",
+  "n_frames": 70,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

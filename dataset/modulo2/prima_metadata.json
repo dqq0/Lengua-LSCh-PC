@@ -1,0 +1,16 @@
+{
+  "filename": "prima_prima_20260414_095640.npz",
+  "filepath": "dataset\\modulo2\\prima_prima_20260414_095640.npz",
+  "label": "prima",
+  "source_video": "videos\\modulo2\\prima.mp4",
+  "timestamp": "20260414_095640",
+  "n_frames": 107,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

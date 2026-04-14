@@ -1,0 +1,16 @@
+{
+  "filename": "b_B_20260414_095356.npz",
+  "filepath": "dataset\\modulo0\\b_B_20260414_095356.npz",
+  "label": "b",
+  "source_video": "videos\\abecedario\\B.mp4",
+  "timestamp": "20260414_095356",
+  "n_frames": 77,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

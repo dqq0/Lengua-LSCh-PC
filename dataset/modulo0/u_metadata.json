@@ -1,0 +1,16 @@
+{
+  "filename": "u_U_20260414_095530.npz",
+  "filepath": "dataset\\modulo0\\u_U_20260414_095530.npz",
+  "label": "u",
+  "source_video": "videos\\abecedario\\U.mp4",
+  "timestamp": "20260414_095530",
+  "n_frames": 76,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
