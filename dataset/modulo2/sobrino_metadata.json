@@ -1,10 +1,10 @@
 {
-  "filename": "sobrino_sobrino_20260414_095657.npz",
-  "filepath": "dataset\\modulo2\\sobrino_sobrino_20260414_095657.npz",
+  "filename": "sobrino_sobrino_20260413_180807.npz",
+  "filepath": "dataset\\familia\\sobrino_sobrino_20260413_180807.npz",
   "label": "sobrino",
   "source_video": "videos\\modulo2\\sobrino.mp4",
-  "timestamp": "20260414_095657",
-  "n_frames": 97,
+  "timestamp": "20260413_180807",
+  "n_frames": 33,
   "n_features": 1665,
   "feature_breakdown": {
     "pose": 99,

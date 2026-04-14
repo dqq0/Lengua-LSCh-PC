@@ -1,10 +1,10 @@
 {
-  "filename": "sobrina_sobrina_20260414_095652.npz",
-  "filepath": "dataset\\modulo2\\sobrina_sobrina_20260414_095652.npz",
+  "filename": "sobrina_sobrina_20260413_180805.npz",
+  "filepath": "dataset\\familia\\sobrina_sobrina_20260413_180805.npz",
   "label": "sobrina",
   "source_video": "videos\\modulo2\\sobrina.mp4",
-  "timestamp": "20260414_095652",
-  "n_frames": 87,
+  "timestamp": "20260413_180805",
+  "n_frames": 29,
   "n_features": 1665,
   "feature_breakdown": {
     "pose": 99,
