@@ -1,0 +1,16 @@
+{
+  "filename": "muchas_gracias_muchas gracias_20260413_214004.npz",
+  "filepath": "dataset/modulo1\\muchas_gracias_muchas gracias_20260413_214004.npz",
+  "label": "muchas_gracias",
+  "source_video": "videos/cortesia\\muchas gracias.mp4",
+  "timestamp": "20260413_214004",
+  "n_frames": 28,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "disculpa_disculpa_20260413_214000.npz",
+  "filepath": "dataset/modulo1\\disculpa_disculpa_20260413_214000.npz",
+  "label": "disculpa",
+  "source_video": "videos/cortesia\\disculpa.mp4",
+  "timestamp": "20260413_214000",
+  "n_frames": 35,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
