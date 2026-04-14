@@ -1,0 +1,16 @@
+{
+  "filename": "donde_vives_donde vives_20260413_205608.npz",
+  "filepath": "dataset\\modulo1\\donde_vives_donde vives_20260413_205608.npz",
+  "label": "donde_vives",
+  "source_video": "videos\\preguntas2\\donde vives.mp4",
+  "timestamp": "20260413_205608",
+  "n_frames": 41,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

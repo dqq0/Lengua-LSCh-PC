@@ -1,0 +1,16 @@
+{
+  "filename": "buenas_tardes_buenas tardes_20260413_205545.npz",
+  "filepath": "dataset\\modulo1\\buenas_tardes_buenas tardes_20260413_205545.npz",
+  "label": "buenas_tardes",
+  "source_video": "videos\\preguntas2\\buenas tardes.mp4",
+  "timestamp": "20260413_205545",
+  "n_frames": 57,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "buenos_dias_buenos dias_20260413_205549.npz",
+  "filepath": "dataset\\modulo1\\buenos_dias_buenos dias_20260413_205549.npz",
+  "label": "buenos_dias",
+  "source_video": "videos\\preguntas2\\buenos dias.mp4",
+  "timestamp": "20260413_205549",
+  "n_frames": 66,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "como_como_20260413_205557.npz",
+  "filepath": "dataset\\modulo1\\como_como_20260413_205557.npz",
+  "label": "como",
+  "source_video": "videos\\preguntas2\\como.mp4",
+  "timestamp": "20260413_205557",
+  "n_frames": 37,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

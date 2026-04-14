@@ -1,0 +1,16 @@
+{
+  "filename": "quien_quien_20260413_205627.npz",
+  "filepath": "dataset\\modulo1\\quien_quien_20260413_205627.npz",
+  "label": "quien",
+  "source_video": "videos\\preguntas2\\quien.mp4",
+  "timestamp": "20260413_205627",
+  "n_frames": 45,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "buenas_noches_buenas noches_20260413_205540.npz",
+  "filepath": "dataset\\modulo1\\buenas_noches_buenas noches_20260413_205540.npz",
+  "label": "buenas_noches",
+  "source_video": "videos\\preguntas2\\buenas noches.mp4",
+  "timestamp": "20260413_205540",
+  "n_frames": 78,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
