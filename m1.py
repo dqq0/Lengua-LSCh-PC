@@ -13,10 +13,10 @@ class SignLanguageDetector:
         self.mp_drawing_styles = mp.solutions.drawing_styles
         self.mp_face_mesh = mp.solutions.face_mesh
         
-        # Initialize Holistic model
+        # Initialize Holistic model (ajustado para detección de manos rápidas / motion blur)
         self.holistic = self.mp_holistic.Holistic(
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
+            min_detection_confidence=0.3,
+            min_tracking_confidence=0.3,
             model_complexity=1, 
             smooth_landmarks=True,
             refine_face_landmarks=True)  # IMPORTANTE: Para iris tracking
@@ -198,7 +198,7 @@ class SignLanguageDetector:
     # NUEVOS MÉTODOS PARA PROCESAMIENTO DE VIDEOS (ENTRENAMIENTO)
     # =========================================================================
 
-    def process_video_file(self, video_path, output_dir="dataset", label=None, fps_target=10):
+    def process_video_file(self, video_path, output_dir="dataset", label=None, fps_target=30):
         """
         Procesa un archivo de video completo y guarda los keypoints.
         
