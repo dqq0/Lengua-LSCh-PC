@@ -1,0 +1,16 @@
+{
+  "filename": "bombero_bombero_20260414_124934.npz",
+  "filepath": "dataset\\bombero_bombero_20260414_124934.npz",
+  "label": "bombero",
+  "source_video": "C:\\Users\\gubor\\Desktop\\videos\\bombero.mp4",
+  "timestamp": "20260414_124934",
+  "n_frames": 59,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

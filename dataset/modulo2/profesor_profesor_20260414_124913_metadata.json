@@ -1,0 +1,16 @@
+{
+  "filename": "profesor_profesor_20260414_124913.npz",
+  "filepath": "dataset\\profesor_profesor_20260414_124913.npz",
+  "label": "profesor",
+  "source_video": "C:\\Users\\gubor\\Desktop\\videos\\profesor.mp4",
+  "timestamp": "20260414_124913",
+  "n_frames": 69,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

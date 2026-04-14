@@ -1,0 +1,16 @@
+{
+  "filename": "estudiante_estudiante_20260414_124832.npz",
+  "filepath": "dataset\\estudiante_estudiante_20260414_124832.npz",
+  "label": "estudiante",
+  "source_video": "C:\\Users\\gubor\\Desktop\\videos\\estudiante.mp4",
+  "timestamp": "20260414_124832",
+  "n_frames": 85,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
