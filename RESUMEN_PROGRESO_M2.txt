@@ -1,0 +1,44 @@
+=== REVISION DE PROGRESO DATASET: MODULO 2 ===
+Progreso Total: 44.7%
+
+[VERDE - DATASETS LISTOS] (17):
+   - mama
+   - papa
+   - hijo
+   - hermano
+   - abuelo
+   - primo
+   - amigo
+   - novio
+   - casa
+   - perro
+   - gato
+   - suegro
+   - yerno
+   - nuero
+   - cunado
+   - casado
+   - pololo
+
+[ROJO - FALTAN POR PROCESAR/GRABAR] (21):
+   - tio
+   - esposo
+   - persona
+   - hombre
+   - mujer
+   - nino
+   - joven
+   - adulto_mayor
+   - familia
+   - trabajo
+   - estudiar
+   - colegio
+   - universidad
+   - profesor
+   - alumno
+   - medico
+   - carabineros
+   - interprete
+   - sordo
+   - matrimonio
+   - pareja
