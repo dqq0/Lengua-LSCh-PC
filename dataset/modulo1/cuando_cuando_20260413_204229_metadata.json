@@ -1,0 +1,16 @@
+{
+  "filename": "cuando_cuando_20260413_204229.npz",
+  "filepath": "dataset\\modulo1\\cuando_cuando_20260413_204229.npz",
+  "label": "cuando",
+  "source_video": "videos\\preguntas\\cuando.mp4",
+  "timestamp": "20260413_204229",
+  "n_frames": 36,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

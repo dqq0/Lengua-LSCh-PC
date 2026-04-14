@@ -1,0 +1,16 @@
+{
+  "filename": "cual_es_tu_nombre_cual es tu nombre_20260413_204319.npz",
+  "filepath": "dataset\\modulo1\\cual_es_tu_nombre_cual es tu nombre_20260413_204319.npz",
+  "label": "cual_es_tu_nombre",
+  "source_video": "videos\\preguntas\\cual es tu nombre.mp4",
+  "timestamp": "20260413_204319",
+  "n_frames": 48,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

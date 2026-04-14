@@ -1,0 +1,16 @@
+{
+  "filename": "donde_donde_20260413_204324.npz",
+  "filepath": "dataset\\modulo1\\donde_donde_20260413_204324.npz",
+  "label": "donde",
+  "source_video": "videos\\preguntas\\donde.mp4",
+  "timestamp": "20260413_204324",
+  "n_frames": 41,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

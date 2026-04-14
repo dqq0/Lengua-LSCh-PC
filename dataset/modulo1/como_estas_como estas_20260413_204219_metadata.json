@@ -1,0 +1,16 @@
+{
+  "filename": "como_estas_como estas_20260413_204219.npz",
+  "filepath": "dataset\\modulo1\\como_estas_como estas_20260413_204219.npz",
+  "label": "como_estas",
+  "source_video": "videos\\preguntas\\como estas.mp4",
+  "timestamp": "20260413_204219",
+  "n_frames": 48,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

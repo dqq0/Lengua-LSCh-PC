@@ -1,0 +1,16 @@
+{
+  "filename": "que_que_20260413_204233.npz",
+  "filepath": "dataset\\modulo1\\que_que_20260413_204233.npz",
+  "label": "que",
+  "source_video": "videos\\preguntas\\que.mp4",
+  "timestamp": "20260413_204233",
+  "n_frames": 36,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

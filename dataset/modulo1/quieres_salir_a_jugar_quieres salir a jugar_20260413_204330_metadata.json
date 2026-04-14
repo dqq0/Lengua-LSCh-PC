@@ -1,0 +1,16 @@
+{
+  "filename": "quieres_salir_a_jugar_quieres salir a jugar_20260413_204330.npz",
+  "filepath": "dataset\\modulo1\\quieres_salir_a_jugar_quieres salir a jugar_20260413_204330.npz",
+  "label": "quieres_salir_a_jugar",
+  "source_video": "videos\\preguntas\\quieres salir a jugar.mp4",
+  "timestamp": "20260413_204330",
+  "n_frames": 63,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
