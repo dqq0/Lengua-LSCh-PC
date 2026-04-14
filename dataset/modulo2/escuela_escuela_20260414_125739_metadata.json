@@ -1,0 +1,16 @@
+{
+  "filename": "escuela_escuela_20260414_125739.npz",
+  "filepath": "dataset\\escuela_escuela_20260414_125739.npz",
+  "label": "escuela",
+  "source_video": "C:\\Users\\gubor\\Desktop\\videos\\escuela.mp4",
+  "timestamp": "20260414_125739",
+  "n_frames": 83,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
