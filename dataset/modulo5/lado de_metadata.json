@@ -1,0 +1,16 @@
+{
+  "filename": "lado de.npz",
+  "filepath": "dataset\\modulo5\\lado de.npz",
+  "label": "lado de",
+  "source_video": "videos\\lugares\\lado de.mp4",
+  "timestamp": "20260414_151705",
+  "n_frames": 120,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

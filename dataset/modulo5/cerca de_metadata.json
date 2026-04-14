@@ -1,0 +1,16 @@
+{
+  "filename": "cerca de.npz",
+  "filepath": "dataset\\modulo5\\cerca de.npz",
+  "label": "cerca de",
+  "source_video": "videos\\lugares\\cerca de.mp4",
+  "timestamp": "20260414_151629",
+  "n_frames": 122,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

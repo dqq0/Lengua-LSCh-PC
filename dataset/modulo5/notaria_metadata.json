@@ -1,0 +1,16 @@
+{
+  "filename": "notaria.npz",
+  "filepath": "dataset\\modulo5\\notaria.npz",
+  "label": "notaria",
+  "source_video": "videos\\lugares\\notaria.mp4",
+  "timestamp": "20260414_151729",
+  "n_frames": 144,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

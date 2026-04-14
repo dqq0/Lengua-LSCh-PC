@@ -1,0 +1,16 @@
+{
+  "filename": "farmacia.npz",
+  "filepath": "dataset\\modulo5\\farmacia.npz",
+  "label": "farmacia",
+  "source_video": "videos\\lugares\\farmacia.mp4",
+  "timestamp": "20260414_151650",
+  "n_frames": 164,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
