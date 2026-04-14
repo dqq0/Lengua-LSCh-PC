@@ -1,0 +1,16 @@
+{
+  "filename": "lateado.npz",
+  "filepath": "dataset\\modulo6\\sentimientos\\lateado.npz",
+  "label": "lateado",
+  "source_video": "videos\\sentimientos\\lateado.mp4",
+  "timestamp": "20260414_154708",
+  "n_frames": 69,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

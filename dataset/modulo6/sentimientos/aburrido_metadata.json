@@ -1,0 +1,16 @@
+{
+  "filename": "aburrido.npz",
+  "filepath": "dataset\\modulo6\\sentimientos\\aburrido.npz",
+  "label": "aburrido",
+  "source_video": "videos\\sentimientos\\aburrido.mp4",
+  "timestamp": "20260414_154633",
+  "n_frames": 78,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

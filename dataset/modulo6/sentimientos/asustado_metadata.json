@@ -1,0 +1,16 @@
+{
+  "filename": "asustado.npz",
+  "filepath": "dataset\\modulo6\\sentimientos\\asustado.npz",
+  "label": "asustado",
+  "source_video": "videos\\sentimientos\\asustado.mp4",
+  "timestamp": "20260414_154638",
+  "n_frames": 78,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
