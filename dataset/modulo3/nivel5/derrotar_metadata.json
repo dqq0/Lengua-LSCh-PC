@@ -1,0 +1,16 @@
+{
+  "filename": "derrotar.npz",
+  "filepath": "dataset\\modulo3\\derrotar.npz",
+  "label": "derrotar",
+  "source_video": "videos\\verbos\\derrotar.mp4",
+  "timestamp": "20260414_113255",
+  "n_frames": 115,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

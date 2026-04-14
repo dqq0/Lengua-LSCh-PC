@@ -1,0 +1,16 @@
+{
+  "filename": "sentir.npz",
+  "filepath": "dataset\\modulo3\\sentir.npz",
+  "label": "sentir",
+  "source_video": "videos\\verbos\\sentir.mp4",
+  "timestamp": "20260414_113603",
+  "n_frames": 73,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "invitar.npz",
+  "filepath": "dataset\\modulo3\\invitar.npz",
+  "label": "invitar",
+  "source_video": "videos\\verbos\\invitar.mp4",
+  "timestamp": "20260414_113355",
+  "n_frames": 121,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

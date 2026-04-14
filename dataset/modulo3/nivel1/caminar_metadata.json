@@ -1,0 +1,16 @@
+{
+  "filename": "caminar.npz",
+  "filepath": "dataset\\modulo3\\caminar.npz",
+  "label": "caminar",
+  "source_video": "videos\\verbos\\caminar.mp4",
+  "timestamp": "20260414_113148",
+  "n_frames": 109,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

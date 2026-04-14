@@ -19,7 +19,7 @@ procesar_lote_m2.py
 limpiar_duplicados.py
 limpiar_nombres.py
 revisar_m2.py
-organizar_modulos.py
+organizar_*.py
 ordenar_extras.py
 listar_palabras.py
 procesar_*.py

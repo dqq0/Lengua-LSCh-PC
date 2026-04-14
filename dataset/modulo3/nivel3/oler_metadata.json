@@ -1,0 +1,16 @@
+{
+  "filename": "oler.npz",
+  "filepath": "dataset\\modulo3\\oler.npz",
+  "label": "oler",
+  "source_video": "videos\\verbos\\oler.mp4",
+  "timestamp": "20260414_113449",
+  "n_frames": 92,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

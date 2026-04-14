@@ -1,0 +1,16 @@
+{
+  "filename": "dar_regalar.npz",
+  "filepath": "dataset\\modulo3\\dar_regalar.npz",
+  "label": "dar_regalar",
+  "source_video": "videos\\verbos\\dar_regalar.mp4",
+  "timestamp": "20260414_113244",
+  "n_frames": 105,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

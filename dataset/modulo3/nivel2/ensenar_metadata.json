@@ -1,0 +1,16 @@
+{
+  "filename": "ensenar.npz",
+  "filepath": "dataset\\modulo3\\ensenar.npz",
+  "label": "ensenar",
+  "source_video": "videos\\verbos\\ensenar.mp4",
+  "timestamp": "20260414_113319",
+  "n_frames": 127,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

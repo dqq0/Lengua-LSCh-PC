@@ -1,0 +1,16 @@
+{
+  "filename": "proteger_cuidar.npz",
+  "filepath": "dataset\\modulo3\\proteger_cuidar.npz",
+  "label": "proteger_cuidar",
+  "source_video": "videos\\verbos\\proteger_cuidar.mp4",
+  "timestamp": "20260414_113535",
+  "n_frames": 121,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}
