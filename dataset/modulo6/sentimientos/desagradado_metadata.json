@@ -3,7 +3,7 @@
   "filepath": "dataset\\modulo6\\sentimientos\\desagradado.npz",
   "label": "desagradado",
   "source_video": "videos\\sentimientos\\desagradado.mp4",
-  "timestamp": "20260414_154652",
+  "timestamp": "20260415_122737",
   "n_frames": 97,
   "n_features": 1665,
   "feature_breakdown": {

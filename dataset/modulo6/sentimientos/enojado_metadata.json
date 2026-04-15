@@ -3,7 +3,7 @@
   "filepath": "dataset\\modulo6\\sentimientos\\enojado.npz",
   "label": "enojado",
   "source_video": "videos\\sentimientos\\enojado.mp4",
-  "timestamp": "20260414_154657",
+  "timestamp": "20260415_122742",
   "n_frames": 97,
   "n_features": 1665,
   "feature_breakdown": {

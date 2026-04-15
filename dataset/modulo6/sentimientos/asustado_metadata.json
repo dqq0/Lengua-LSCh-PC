@@ -3,7 +3,7 @@
   "filepath": "dataset\\modulo6\\sentimientos\\asustado.npz",
   "label": "asustado",
   "source_video": "videos\\sentimientos\\asustado.mp4",
-  "timestamp": "20260414_154638",
+  "timestamp": "20260415_122722",
   "n_frames": 78,
   "n_features": 1665,
   "feature_breakdown": {

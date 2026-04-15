@@ -3,7 +3,7 @@
   "filepath": "dataset\\modulo6\\sentimientos\\cansado.npz",
   "label": "cansado",
   "source_video": "videos\\sentimientos\\cansado.mp4",
-  "timestamp": "20260414_154642",
+  "timestamp": "20260415_122727",
   "n_frames": 77,
   "n_features": 1665,
   "feature_breakdown": {

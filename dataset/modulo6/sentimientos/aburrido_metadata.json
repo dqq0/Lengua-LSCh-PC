@@ -3,7 +3,7 @@
   "filepath": "dataset\\modulo6\\sentimientos\\aburrido.npz",
   "label": "aburrido",
   "source_video": "videos\\sentimientos\\aburrido.mp4",
-  "timestamp": "20260414_154633",
+  "timestamp": "20260415_122718",
   "n_frames": 78,
   "n_features": 1665,
   "feature_breakdown": {

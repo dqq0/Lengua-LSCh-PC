@@ -1,0 +1,16 @@
+{
+  "filename": "90.npz",
+  "filepath": "dataset\\modulo6\\numeros\\90.npz",
+  "label": "90",
+  "source_video": "videos\\numeros\\90.mp4",
+  "timestamp": "20260415_122851",
+  "n_frames": 84,
+  "n_features": 1665,
+  "feature_breakdown": {
+    "pose": 99,
+    "left_hand": 63,
+    "right_hand": 63,
+    "face": 1404,
+    "face_features": 6
+  }
+}

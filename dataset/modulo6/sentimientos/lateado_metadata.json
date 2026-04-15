@@ -3,7 +3,7 @@
   "filepath": "dataset\\modulo6\\sentimientos\\lateado.npz",
   "label": "lateado",
   "source_video": "videos\\sentimientos\\lateado.mp4",
-  "timestamp": "20260414_154708",
+  "timestamp": "20260415_122753",
   "n_frames": 69,
   "n_features": 1665,
   "feature_breakdown": {
